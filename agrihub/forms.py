@@ -61,3 +61,12 @@ class CropForm(FlaskForm):
     address=StringField('address',validators=[DataRequired(),Length(min=5,max=100)])
 
     add_crop=SubmitField('Add Crop')
+    
+    
+class ItemForm(FlaskForm):
+    item_name=StringField('item_name',validators=[DataRequired(),Length(min=4,max=20)])
+    item_info=StringField('item_info',validators=[DataRequired(),Length(min=20,max=100)])
+    item_rate=IntegerField('item_rate',validators=[DataRequired()])
+    address=StringField('address',validators=[DataRequired(),Length(min=5,max=100)])
+
+    add_crop=SubmitField('Add Item')

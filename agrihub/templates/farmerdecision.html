@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 20px;
+        padding: 0px;
+        overflow-x:hidden;
+      }
+
+      .container {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .crop {
+        height: 100vh;
+        width: 50vw;
+        margin: 10px;
+        border-radius: 150px;
+
+        background-image: url("https://www.sare.org/wp-content/uploads/2017-cover-crop-survey-farmers.jpg"); /* Replace 'your-image-url.jpg' with the path to your image */
+        background-size: contain; /* Image will fit inside the div */
+        background-repeat: no-repeat; /* Prevent image from repeating */
+        background-position: center; /* Centers the image within the div */
+        opacity: 0.7;
+        display: flex;
+        justify-content: center;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50vw;
+        overflow-y:hidden;
+        overflow-x:hidden;
+      }
+
+      .action1 {
+        height: 50vh;
+        width: 50vw;
+        margin: 5px;
+        border-radius: 30px;
+        overflow-y:hidden;
+        background-image: url("https://images.tractorgyan.com/uploads/1595242516-Tractor-on-Rent-online-in-India.png"); /* Replace 'your-image-url.jpg' with the path to your image */
+        background-size: contain; /* Image will fit inside the div */
+        background-repeat: no-repeat; /* Prevent image from repeating */
+        background-position: center; /* Centers the image within the div */
+        opacity: 0.7;
+        display: flex;
+        justify-content: center;
+      }
+
+      .action2 {
+        height: 50vh;
+        width: 50vw;
+        margin: 5px;
+        border:1px solid #000000;
+        border-radius: 30px;
+        overflow-y:hidden;
+        background-image: url("https://assets.khetigaadi.com/tr:h-350,w-500/new-tractor/John-Deere-5050D1643459710.png"); /* Replace 'your-image-url.jpg' with the path to your image */
+        background-size: contain; /* Image will fit inside the div */
+        background-repeat: no-repeat; /* Prevent image from repeating */
+        background-position: center; /* Centers the image within the div */
+        opacity: 0.7;
+        display: flex;
+        justify-content: center;
+      }
+
+      .custom-btn {
+        width: 130px;
+        height: 40px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-family: "Lato", sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
+        text-decoration:none
+      }
+
+      /* 5 */
+      .btn-5 {
+        width: 150px;
+        height: 60px;
+        line-height: 42px;
+        padding: 0;
+        border: none;
+        background: rgb(255, 27, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(255, 27, 0, 1) 0%,
+          rgba(251, 75, 2, 1) 100%
+        );
+        text-decoration:none;
+      }
+      .btn-5:hover {
+        color: #f0094a;
+        background: transparent;
+        box-shadow: none;
+      }
+      .btn-5:before,
+      .btn-5:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #f0094a;
+        box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+          4px 4px 5px 0px #0002;
+        transition: 400ms ease all;
+      }
+      .btn-5:after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+      }
+      .btn-5:hover:before,
+      .btn-5:hover:after {
+        width: 100%;
+        transition: 800ms ease all;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <a href="{{ url_for('farmerDashboard') }}">
+      <div class="crop">
+        <button class="custom-btn btn-5"><span>Add Crop to Sell</span></button>
+      </div>
+    </a>
+      <div class="actions">
+        <a href="{{ url_for('rentDashboard') }}">
+        <div class="action1">To Add Rent Item</div>
+        </a>
+        <a href="{{ url_for('rentbuyerDashboard') }}">
+        <div class="action2">To Buy Rent Item</div>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

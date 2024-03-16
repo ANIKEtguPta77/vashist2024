@@ -1,12 +1,13 @@
 from flask import render_template,url_for,redirect,flash,request
 from agrihub import app,db,bcrypt
-from agrihub.forms import RegistrationFormBuyer,RegistrationFormFarmer,LoginFormBuyer,LoginFormFarmer,CropForm
+from agrihub.forms import RegistrationFormBuyer,RegistrationFormFarmer,LoginFormBuyer,LoginFormFarmer,CropForm,ItemForm
 from flask_login import login_required,logout_user
-from agrihub.models import Farmer,Buyer,Crop
+from agrihub.models import Farmer,Buyer,Crop,Item
 from flask_login import login_user,current_user,logout_user,login_required
 import pickle 
+import random
 
-model=pickle.load(open("./agrihub/model.pkl","rb"))
+# model=pickle.load(open("./agrihub/model.pkl","rb"))
 
 @app.route("/")
 @app.route("/home")
@@ -36,10 +37,80 @@ def news():
 @app.route('/marketprice')
 def marketprice():
     return render_template('marketprice.html')
+
+
+@app.route('/soiltestcenter')
+def soiltestcenter():
+    return render_template('soiltestcenter.html')
+
+
+@app.route('/successcrop')
+def successcrop():
+    return render_template('successcrop.html')
+
+
+@app.route('/successitem')
+def successitem():
+    return render_template('successitem.html')
+
+
+@app.route('/farmerdecision')
+def farmerdecision():
+    return render_template('farmerdecision.html')
+
+
+
 @app.route('/register')
 def register():
     print("register")
     return render_template('register.html')
+
+
+
+todos = [
+    {
+        'id': 1,
+        'name': 'Write SQL',
+        'checked': False
+    },
+    {
+        'id': 2,
+        'name': 'Write Python',
+        'checked': True
+    }
+]
+
+# @app.route("/", methods=["GET", "POST"])
+@app.route("/todo", methods=["GET", "POST"])
+def todo():
+    if (request.method == "POST"):
+        todo_name = request.form["todo_name"]
+        cur_id = random.randint(1, 1000)
+        todos.append(
+            {
+            'id': cur_id,
+            'name': todo_name,
+            'checked': False
+            }
+        )
+        return redirect(url_for("todo"))
+    return render_template("todo.html", items=todos)
+
+@app.route("/checked/<int:todo_id>", methods=["POST"])
+def checked_todo(todo_id):
+    for todo in todos:
+        if todo['id'] == todo_id:
+            todo['checked'] = not todo['checked']  # Toggle the status
+            break
+    return redirect(url_for("todo"))
+
+@app.route("/delete/<int:todo_id>", methods=["POST"])
+def delete_todo(todo_id):
+    global todos
+    for todo in todos:
+        if todo['id'] == todo_id:
+            todos.remove(todo)
+    return redirect(url_for("todo"))
 
 @app.route("/registerFarmer" ,methods=['GET','POST'])
 def registerFarmer():
@@ -86,7 +157,7 @@ def login():
 @app.route("/farmerLogin",methods=['GET','POST'])
 def farmerLogin():
     if current_user.is_authenticated:
-        return redirect(url_for('farmerDashboard'))
+        return redirect(url_for('farmerdecision'))
     form =LoginFormFarmer()
     if form.validate_on_submit():
         farmer=Farmer.query.filter_by(email=form.email.data).first()
@@ -106,11 +177,29 @@ def farmerDashboard():
         crop=Crop(crop_name=form.crop_name.data,content=form.crop_info.data,price=form.crop_rate.data,farmer_address=form.address.data)
         db.session.add(crop)
         db.session.commit()
-        # flash('Crop added successfully!','success')
-        return redirect('/farmerdashboard')
+        flash('Crop added successfully!','success')
+        return redirect('/successcrop')
      return render_template('farmerdashboard.html',form=form)
+ 
+ 
+@app.route('/rentdashboard',methods=["GET","POST"])
+def rentDashboard():
+     form=ItemForm()
+     if form.validate_on_submit():
+        item=Item(item_name=form.item_name.data,content=form.item_info.data,price=form.item_rate.data,farmer_address=form.address.data)
+        db.session.add(item)
+        db.session.commit()
+        flash('Crop added successfully!','success')
+        return redirect('/successitem')
+     return render_template('rentdashboard.html',form=form)
     
-
+@app.route('/rentbuyerdashboard',methods=["GET","POST"])
+def rentbuyerDashboard():
+     items=Item.query.all()
+     print(items)
+     return render_template('rentbuyerdashboard.html',items=items)
+ 
+ 
 @app.route("/buyerLogin",methods=['GET','POST'])
 def buyerLogin(): 
     if current_user.is_authenticated:
@@ -133,6 +222,7 @@ def buyerDashboard():
      crops=Crop.query.all()
      print(crops)
      return render_template('buyerdashboard.html',crops=crops)
+
 
 
 

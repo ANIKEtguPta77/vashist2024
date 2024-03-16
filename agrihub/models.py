@@ -39,7 +39,21 @@ class Crop(db.Model,UserMixin):
     farmer_address=db.Column(db.String(100),nullable=False)
     # user_id = db.Column(db.Integer, db.ForeignKey('farmer.id'), nullable=False)
 
+
+
      
 
     def __repr__(self):
         return f"Post('{self.crop_name}', '{self.date_posted}')"
+    
+    
+class Item(db.Model,UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    item_name = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    price=db.Column(db.Integer,nullable=False)
+    farmer_address=db.Column(db.String(100),nullable=False)
+    
+    def __repr__(self):
+        return f"Post('{self.item_name}', '{self.date_posted}')"
