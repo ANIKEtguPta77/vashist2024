@@ -1,7 +1,12 @@
 # ⭐⭐⭐ Farmer Helper ⭐⭐⭐
 Website-Link:https://vashist2024.onrender.com
+
+
+
 Project-Demo-Video-LInkhttps:www.awesomescreenshot.com/video/25886874?key=7240e268b507f135a32ca5b5a670ec83
-ML-Demo_link:
+
+
+ML-Demo_link:https://drive.google.com/file/d/1ZFRygSj0i5BSy24hgahkbOa2JxIkmkB5/view?usp=sharing
 
 ## Team Details 
 Team Number:VH248
@@ -100,3 +105,6 @@ ALso we are committed in building a chatbot to communicate with farmers to help 
 
 ## Declaration
 We confirm that the project showcased here was either developed entirely during the hackathon or underwent significant updates within the hackathon timeframe. We understand that if any plagiarism from online sources is detected, our project will be disqualified, and our participation in the hackathon will be revoked.
+
+
+
