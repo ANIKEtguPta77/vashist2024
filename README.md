@@ -16,6 +16,12 @@ Sanjeet Kumar| cs21b2012@iiitdm.ac.in
 
 ## Problem Statement
 We're addressing the challenges faced by Indian farmers by providing a platform where they can sell their crops directly, eliminating middlemen and maximizing their profits. Farmers who have surplus equipment can easily rent it out, generating additional income with ease. Our platform also offers features like mapping nearby soil centers, enabling farmers to access vital resources. Farmers can create to-do lists, receiving timely reminders to manage their tasks efficiently. Moreover, farmers can provide soil information, receiving tailored crop recommendations to optimize their yield potential.
+<img width="947" alt="Capture" src="https://github.com/ANIKEtguPta77/vashist2024/assets/107102866/37f96529-1863-4a75-bdd1-50b70fea61db">
+
+
+<img width="942" alt="Capture1" src="https://github.com/ANIKEtguPta77/vashist2024/assets/107102866/1ff5d012-4dc5-44f4-ad47-4912ea908321">
+<img width="953" alt="Capture2" src="https://github.com/ANIKEtguPta77/vashist2024/assets/107102866/1c4fbb78-7596-4dbb-b3f6-757130e4405e">
+
 
 ## About the Project
 Our endeavor is to alleviate the challenges faced by Indian farmers through technological solutions, streamlining farming practices and enhancing their quality of life by providing innovative tools and resources.
