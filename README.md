@@ -1,6 +1,7 @@
 # ⭐⭐⭐ Farmer Helper ⭐⭐⭐
 Website-Link:https://vashist2024.onrender.com
-Demo-Video:
+Project-Demo-Video-LInkhttps:www.awesomescreenshot.com/video/25886874?key=7240e268b507f135a32ca5b5a670ec83
+ML-Demo_link:
 
 ## Team Details 
 Team Number:VH248
@@ -10,6 +11,8 @@ Team Number:VH248
 Aniket Gupta | cs21b1060@iiitdm.ac.in
 
 Sanjeet Kumar| cs21b2012@iiitdm.ac.in
+
+Prakhar Singh | cs21b1042@iiitdm.ac.in
 
 
 
