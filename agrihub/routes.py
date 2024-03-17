@@ -1,4 +1,4 @@
-from flask import render_template,url_for,redirect,flash,request
+from flask import render_template,url_for,redirect,flash,request,send_from_directory
 from agrihub import app,db,bcrypt
 from agrihub.forms import RegistrationFormBuyer,RegistrationFormFarmer,LoginFormBuyer,LoginFormFarmer,CropForm,ItemForm
 from flask_login import login_required,logout_user
@@ -8,6 +8,13 @@ import pickle
 import random
 
 # model=pickle.load(open("./agrihub/model.pkl","rb"))
+
+input_dict={
+    "farmernews":["Farmer_Protest.mp4","Farmer_Protest1.mp4","1.mp4","2.mp4"],
+    "learnenglish":["1.mp4","2.mp4","Fast_English_.mp4","native_english.mp4"],
+    "lesswaterfarming":["Drought_Resistant.mp4","Dryland_Agriculture.mp4","HydroPonic_a.mp4","next_gen.mp4"],
+}
+
 
 @app.route("/")
 @app.route("/home")
@@ -66,6 +73,22 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/videos/<path:filename>')
+def serve_video(filename):
+    return send_from_directory('static/videos', filename)
+
+
+@app.route('/learning',methods=['GET','POST'])
+def learning():
+    if request.method == 'POST':
+        input_text = request.form.get('input_text', '').lower()  # Get input_text from form
+        if input_text in input_dict:
+            return render_template('learning.html', video_urls=input_dict[input_text])
+        else:
+            return render_template('learning.html', video_urls=input_dict["farmernews"])
+    else:
+        return render_template('learning.html', video_urls=input_dict['farmernews'])  # Pass None to video_urls initially
+    
 
 todos = [
     {
@@ -165,7 +188,7 @@ def farmerLogin():
             login_user(farmer)
             # return redirect(url_for('farmerDashboard'))
             next_page=request.args.get('next')
-            return redirect(next_page)if next_page else redirect(url_for('farmerDashboard'))
+            return redirect(next_page)if next_page else redirect(url_for('farmerdecision'))
         else:
             flash('Login Unsuccessful. Please check email and password')
     return render_template('farmer_login.html', form=form)
@@ -235,3 +258,77 @@ def aboutus():
 def logout():
     logout_user()
     return redirect(url_for('home'))
+
+
+
+
+maps1 = []
+maps = [
+    {
+        'id': 1,
+        'location': 'chennai',
+        'exact_loc': 'Kandgai',
+        'distance': 5
+    },
+    {
+        'id': 2,
+        'location': 'delhi',
+        'exact_loc': 'Cannaught Place',
+        'distance': 10
+    },
+    {
+        'id': 3,
+        'location': 'delhi',
+        'exact_loc': 'Near Rastrapathi Bhawan',
+        'distance': 15
+    },
+    {
+        'id': 4,
+        'location': 'deoria',
+        'exact_loc': 'New Colony',
+        'distance': 12
+    },
+    {
+        'id': 5,
+        'location': 'gorakhpur',
+        'exact_loc': 'Pipiganj',
+        'distance': 13
+    },
+    {
+        'id': 6,
+        'location': 'chennai',
+        'exact_loc': 'Kelembakkam',
+        'distance': 5
+    },
+    {
+        'id': 7,
+        'location': 'delhi',
+        'exact_loc': 'Chandni Chowk',
+        'distance': 10
+    },
+    {
+        'id': 8,
+        'location': 'delhi',
+        'exact_loc': 'Janpath Market',
+        'distance': 15
+    },
+    {
+        'id': 9,
+        'location': 'deoria',
+        'exact_loc': 'Garul Par',
+        'distance':12
+   }
+]
+
+
+@app.route("/map", methods=["GET", "POST"])
+def map():
+    if request.method == "POST":
+        location = request.form["location"]
+        cur_id = random.randint(1, 1000)
+        maps1.clear()
+        for item in maps:
+            if item['location'] == location.lower():
+                maps1.append(item)
+        return redirect(url_for('map'))
+    return render_template('map.html',items=maps1)

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List Flask</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <style>
+      ody {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        background-color: whitesmoke;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #input-location,
+      #input-location1 {
+        width: 250px;
+        height: 25px;
+        font-size: 1.25rem;
+      }
+
+      #add-location {
+        height: 40px;
+        width: 100px;
+        border-radius: 50%;
+        border: none;
+        font-size: 1.5rem;
+        background-color: lightgreen;
+        cursor: pointer;
+      }
+
+      .location-container {
+        width: 80vw;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .locations {
+        background-color: lightsteelblue;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px 0px 10px;
+      }
+
+      .locations1 {
+        background-color: red;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px;
+      }
+
+      .actions > form {
+        display: inline;
+      }
+
+      .actions > form > button {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        background-color: red;
+        border: none;
+        color: white;
+        padding: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Soil Test Center Near You</h1>
+    <form class="input-container" action="{{ url_for('map') }}" method="POST">
+      <input
+        type="text"
+        placeholder="Enter todo"
+        id="input-location"
+        name="location"
+      />
+      <button id="add-location">Search</button>
+    </form>
+    <h2>Place</h2>
+    <div class="location-container">
+      {% if items %} {% for item in items %}
+      <div class="locations">
+        <p>{{ item.exact_loc }}</p>
+        <p>{{ item.distance }}Km</p>
+      </div>
+      {% endfor %} {% else %}
+      <p class="locations1">No places found</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
