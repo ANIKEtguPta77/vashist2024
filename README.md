@@ -27,15 +27,29 @@ Main Page
 
 
 
-Decision Page
+Login Page
 <img width="942" alt="Capture1" src="https://github.com/ANIKEtguPta77/vashist2024/assets/107102866/1ff5d012-4dc5-44f4-ad47-4912ea908321">
 
 
 
 
 
-
+Decision Page
 <img width="953" alt="Capture2" src="https://github.com/ANIKEtguPta77/vashist2024/assets/107102866/1c4fbb78-7596-4dbb-b3f6-757130e4405e">
+
+
+
+Learning Page
+<img width="943" alt="Capture4" src="https://github.com/ANIKEtguPta77/vashist2024/assets/107102866/6a27e0de-02a0-4053-acda-83cd2cd67ccb">
+
+
+
+Buy Crops Page
+
+![Uploading Capture3.PNG…]()
+
+
+
 
 
 ## About the Project
