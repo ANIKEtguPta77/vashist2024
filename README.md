@@ -46,7 +46,8 @@ Learning Page
 
 Buy Crops Page
 
-![Uploading Capture3.PNG…]()
+<img width="945" alt="Capture3" src="https://github.com/ANIKEtguPta77/vashist2024/assets/107102866/d239d6ac-2f9d-4386-94d2-0f95b64c4ce7">
+
 
 
 
